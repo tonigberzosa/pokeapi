@@ -31,19 +31,16 @@ export class PokeListComponent implements OnInit {
           this.pokeApiService.getPokemonByName(data.results[i].name)
             .subscribe((data: Pokemon) => {
               this.pokeList.push(new Pokemon(data));
+              this.sortPokemonList();
             });
         };
-        // this.sortPokemonList();
       });
   }
 
   sortPokemonList(): void {
-    // this.pokeList.sort((a, b) => a.id - b.id);
-    const numbers = [4, 2, 5, 1, 3];
     this.pokeList.sort(function(a, b) {
       return a.id - b.id;
     });
-    console.log(this.pokeList);
   }
 
   searchPokemon(name: string): void {
