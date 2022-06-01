@@ -1,0 +1,36 @@
+<div class="container mx-auto p-10">
+  <ul>
+    <li class="py-5" *ngFor="let pokemon of pokeDetail">
+      <div class="flex flex-col p-6 ring-1 ring-slate-200 rounded-lg shadow-sm mx-auto max-w-xl">
+        <div class="flex flex-row justify-between">
+          <h3 class="text-xl font-semibold capitalize">{{pokemon.name}}</h3>
+          <p class="font-semibold">#{{pokemon.id}}</p>
+        </div>
+        <div class="flex flex-row justify-between gap-4">
+          <div class="flex flex-col my-5 w-64">
+            <ul>
+              <li class="my-2" *ngFor="let stat of pokemon.stats">
+                <div class="flex mb-1 justify-between">
+                  <p class="text-base font-medium text-slate-700">{{stat.name}}</p>
+                  <p class="text-xs self-center">{{stat.value}}</p>
+                </div>
+                <div class="w-full bg-slate-200 rounded-full h-2.5">
+                  <div class="bg-slate-400 h-2.5 rounded-full" [ngStyle]="{'width': stat.value * 100 / 255 + '%'}">
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <img class="my-10 h-40 w-40" [src]="pokemon.image" alt="{{pokemon.name}}" />
+            <ul class="flex flex-row gap-2 justify-center">
+              <li *ngFor="let type of pokemon.types">
+                <p class="p-4 bg-slate-100 text-slate-700 rounded-lg capitalize">{{type.name}}</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
